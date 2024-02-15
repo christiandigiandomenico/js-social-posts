@@ -58,6 +58,8 @@ const posts = [
 
 const cardElement = document.getElementById("container")
 
+const likedPosts = [];
+
 posts.forEach(function (contentPosts, index) {
 
     cardElement.innerHTML += `    
@@ -100,11 +102,14 @@ document.querySelectorAll('.js-like-button').forEach(button => {
         event.preventDefault();
 
         const postElement = this.closest('.post');
+        const postId = parseInt(this.getAttribute('data-postid'));
 
         const likeCounter = postElement.querySelector('.js-likes-counter');
-
         likeCounter.textContent = parseInt(likeCounter.textContent) + 1;
 
         this.querySelector('.like-button__label').style.color = 'red';
+
+        likedPosts.push(postId);
+        console.log(likedPosts);
     });
 });
