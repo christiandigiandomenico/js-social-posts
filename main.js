@@ -108,15 +108,23 @@ document.querySelectorAll('.js-like-button').forEach(button => {
         const postElement = this.closest('.post');
         const postId = parseInt(this.getAttribute('data-postid'));
 
-        this.querySelector('.like-button__label').style.color = 'red';
+        const likeCounter = postElement.querySelector('.js-likes-counter');
 
-        if (!likedPosts.includes(postId)) {
+        if (likedPosts.includes(postId)) {
 
-            likedPosts.push(postId)
+            const index = likedPosts.indexOf(postId);
+            likedPosts.splice(index, 1);
 
-            const likeCounter = postElement.querySelector('.js-likes-counter');
+            likeCounter.textContent = parseInt(likeCounter.textContent) - 1;
+
+            this.querySelector('.like-button__label').style.color = '';
+        } else {
+
+            likedPosts.push(postId);
+
             likeCounter.textContent = parseInt(likeCounter.textContent) + 1;
 
+            this.querySelector('.like-button__label').style.color = 'red';
         }
 
         console.log(likedPosts);
