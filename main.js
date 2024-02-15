@@ -62,16 +62,18 @@ const likedPosts = [];
 
 posts.forEach(function (contentPosts, index) {
 
+    let date = contentPosts.created.split("-").reverse().join("-")
+
     cardElement.innerHTML += `    
     <div class="post">
             <div class="post__header">
                 <div class="post-meta">                    
                     <div class="post-meta__icon">
-                        <img class="profile-pic" src="${contentPosts.author.image}" alt="${index}">                    
+                        <img class="profile-pic" src="${contentPosts.author.image}" alt="${index} id="image__js">                    
                     </div>
                     <div class="post-meta__data">
                         <div class="post-meta__author">${contentPosts.author.name}</div>
-                        <div class="post-meta__time">${contentPosts.created}</div>
+                        <div class="post-meta__time">${date}</div>
                     </div>                    
                 </div>
             </div>
@@ -120,3 +122,4 @@ document.querySelectorAll('.js-like-button').forEach(button => {
         console.log(likedPosts);
     });
 });
+
