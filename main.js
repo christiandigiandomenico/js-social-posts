@@ -97,6 +97,15 @@ posts.forEach(function (contentPosts, index) {
         </div>
     `
 
+    const imgElement = document.querySelectorAll(".post-meta__icon")
+
+    if (contentPosts.author.image == null) {
+
+        imgElement[index].removeChild
+        imgElement[index].innerHTML = `<div class="profile-pic-default">LF</div>`
+
+    }
+
 })
 
 // const buttonElement = document.querySelectorAll(".like-button")
