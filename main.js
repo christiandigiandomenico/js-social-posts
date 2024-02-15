@@ -97,6 +97,8 @@ posts.forEach(function (contentPosts, index) {
 
 })
 
+// const buttonElement = document.querySelectorAll(".like-button")
+
 document.querySelectorAll('.js-like-button').forEach(button => {
     button.addEventListener('click', function (event) {
         event.preventDefault();
@@ -104,12 +106,17 @@ document.querySelectorAll('.js-like-button').forEach(button => {
         const postElement = this.closest('.post');
         const postId = parseInt(this.getAttribute('data-postid'));
 
-        const likeCounter = postElement.querySelector('.js-likes-counter');
-        likeCounter.textContent = parseInt(likeCounter.textContent) + 1;
-
         this.querySelector('.like-button__label').style.color = 'red';
 
-        likedPosts.push(postId);
+        if (!likedPosts.includes(postId)) {
+
+            likedPosts.push(postId)
+
+            const likeCounter = postElement.querySelector('.js-likes-counter');
+            likeCounter.textContent = parseInt(likeCounter.textContent) + 1;
+
+        }
+
         console.log(likedPosts);
     });
 });
