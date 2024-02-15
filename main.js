@@ -97,18 +97,26 @@ posts.forEach(function (contentPosts, index) {
         </div>
     `
 
+
     const imgElement = document.querySelectorAll(".post-meta__icon")
 
     if (contentPosts.author.image == null) {
 
+        const nameVar = contentPosts.author.name.split(" ");
+        let authorInitial = "";
+
+        for (let i = 0; i < nameVar.length; i++) {
+            authorInitial += nameVar[i][0];
+
+        }
+
+        authorInitial = authorInitial.toUpperCase();
         imgElement[index].removeChild
-        imgElement[index].innerHTML = `<div class="profile-pic-default">LF</div>`
+        imgElement[index].innerHTML = `<div class="profile-pic-default"><span>${authorInitial}</span></div>`
 
     }
 
 })
-
-// const buttonElement = document.querySelectorAll(".like-button")
 
 document.querySelectorAll('.js-like-button').forEach(button => {
     button.addEventListener('click', function (event) {
